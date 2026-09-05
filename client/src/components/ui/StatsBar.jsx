@@ -10,7 +10,7 @@ export default function StatsBar() {
         {stats.map(({ label, value }, index) => {
           const Icon = icons[index]
           return (
-            <div key={label} className="flex items-center gap-3">
+            <div key={label} className="flex items-center justify-center gap-3">
               <Icon className="h-5 w-5 shrink-0 text-[#00d181]" />
               <div>
                 <p className="text-lg font-bold text-fg">{value}</p>

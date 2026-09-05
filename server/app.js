@@ -16,6 +16,7 @@ app.post('/api/payments/webhook', express.raw({ type: 'application/json' }), Web
 app.use(express.json());
 app.use(cookieParser());
 
+
 // routes
 const authRoutes = require('./routers/authRoute');
 const courseRoutes = require('./routers/courseRoute');
