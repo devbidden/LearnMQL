@@ -6,13 +6,14 @@ const connectcloudinary = require("./config/cloudinary").connectcloudinary;
 const { verifyEmailTransport } = require("./utils/email");
 const app = require("./app");
 const PORT = process.env.PORT || 5000;
+const webhook = require("./api/webhook");
 
 async function startServer() {
     try {
         await connectDB();
         connectcloudinary();
         verifyEmailTransport();
-
+        app.use("/api/webhook", webhook);
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
         });
@@ -21,5 +22,5 @@ async function startServer() {
         process.exitCode = 1;
     }
 }
-
+ 
 startServer();
