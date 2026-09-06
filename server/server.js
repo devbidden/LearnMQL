@@ -7,10 +7,19 @@ const { verifyEmailTransport } = require("./utils/email");
 const app = require("./app");
 const PORT = process.env.PORT || 5000;
 
-connectDB();
-connectcloudinary();  
-verifyEmailTransport();
+async function startServer() {
+    try {
+        await connectDB();
+        connectcloudinary();
+        verifyEmailTransport();
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-}); 
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+        });
+    } catch (error) {
+        console.error(`Server startup failed: ${error.message}`);
+        process.exitCode = 1;
+    }
+}
+
+startServer();

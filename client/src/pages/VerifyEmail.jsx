@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { CheckCircle2, TrendingUp, XCircle } from 'lucide-react'
+import { CheckCircle2, XCircle } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import Spinner from '../components/ui/Spinner'
+import BrandLogo from '../components/layout/BrandLogo'
 
 export default function VerifyEmail() {
     const { token } = useParams()
@@ -31,7 +32,7 @@ export default function VerifyEmail() {
     return (
         <section className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-5 py-16">
             <div className="w-full max-w-md text-center">
-                <TrendingUp className="mx-auto h-8 w-8 text-[#00d181]" strokeWidth={2.5} />
+                <BrandLogo compact />
 
                 {status === 'verifying' && (
                     <>

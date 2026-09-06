@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Mail, TrendingUp } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import { footerLinks, telegramUrl } from '../../data/mockData'
+import BrandLogo from './BrandLogo'
 
 export default function Footer() {
   return (
@@ -8,12 +9,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-12 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <Link to="/" className="flex items-center gap-2 text-fg">
-              <TrendingUp className="h-5 w-5 text-[#00d181]" strokeWidth={2.5} />
-              <span className="text-lg font-bold tracking-tight">
-                Learn<span className="text-[#00d181]">MQL5</span>
-              </span>
-            </Link>
+            <BrandLogo />
             <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
               Premium trading bots and coding courses to help you automate and master the markets.
             </p>

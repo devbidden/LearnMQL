@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { TrendingUp } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import Spinner from '../components/ui/Spinner'
+import BrandLogo from '../components/layout/BrandLogo'
 
 export default function ResetPassword() {
     const [form, setForm] = useState({ password: '', confirmPassword: '' })
@@ -33,7 +33,7 @@ export default function ResetPassword() {
         <section className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-5 py-16">
             <div className="w-full max-w-md">
                 <div className="text-center">
-                    <TrendingUp className="mx-auto h-8 w-8 text-[#00d181]" strokeWidth={2.5} />
+                    <BrandLogo compact />
                     <h1 className="mt-6 text-3xl font-bold text-fg">Reset password</h1>
                     <p className="mt-2 text-muted">Choose a new password for your account</p>
                 </div>

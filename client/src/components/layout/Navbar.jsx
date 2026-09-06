@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { Menu, Moon, Sun, TrendingUp, X } from 'lucide-react'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import { navLinks } from '../../data/mockData'
 import { useAuth } from '../../hooks/useAuth'
 import { useTheme } from '../../context/ThemeContext'
 import Spinner from '../ui/Spinner'
+import BrandLogo from './BrandLogo'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -21,12 +22,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-page/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 text-fg" onClick={() => setOpen(false)}>
-          <TrendingUp className="h-5 w-5 text-[#00d181]" strokeWidth={2.5} />
-          <span className="text-lg font-bold tracking-tight">
-            Learn<span className="text-[#00d181]">MQL5</span>
-          </span>
-        </Link>
+        <BrandLogo onClick={() => setOpen(false)} />
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
           {navLinks.map(({ to, label }) => (
@@ -48,8 +44,7 @@ export default function Navbar() {
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
-                `rounded-lg px-4 py-2 text-sm font-medium transition ${
-                  isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
+                `rounded-lg px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
                 }`
               }
             >
@@ -60,8 +55,7 @@ export default function Navbar() {
             <NavLink
               to="/admin"
               className={({ isActive }) =>
-                `rounded-lg px-4 py-2 text-sm font-medium transition ${
-                  isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
+                `rounded-lg px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
                 }`
               }
             >
