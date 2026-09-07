@@ -4,9 +4,29 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
+const normalizeOrigin = (value) =>
+    typeof value === 'string' ? value.trim().replace(/^['"]|['"]$/g, '') : value;
+
+const allowedOrigins = [
+    normalizeOrigin(process.env.FRONTEND_URL),
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+].filter(Boolean);
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+            return;
+        }
+
+        callback(new Error(`Origin ${origin} not allowed by CORS`));
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Bachs webhook needs the raw body for signature verification — mount before express.json

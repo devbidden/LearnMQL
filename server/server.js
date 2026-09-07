@@ -8,7 +8,7 @@ const app = require("./app");
 const PORT = process.env.PORT || 5000;
 const webhook = require("./api/webhook");
 
-async function startServer() {
+async function startServer() { 
     try {
         await connectDB();
         connectcloudinary();
