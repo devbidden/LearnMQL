@@ -159,7 +159,7 @@ export default function CourseDetail() {
           type="button"
           onClick={handleStart}
           disabled={starting}
-          className="mt-8 inline-flex w-full items-center justify-center rounded-lg bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {starting
             ? 'Please wait…'

@@ -22,10 +22,11 @@ export default function Contact() {
   }
 
   return (
-    <section className="py-16 lg:py-20">
+    <section className="py-20 lg:py-28">
       <div className="mx-auto max-w-lg px-5 lg:px-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-fg">Get in Touch</h1>
+          <p className="eyebrow">Contact</p>
+          <h1 className="display-title mt-4 text-5xl font-bold text-fg">Get in touch</h1>
           <p className="mt-4 text-muted">Have a question? Send us a message.</p>
         </div>
 
@@ -46,7 +47,7 @@ export default function Contact() {
               placeholder="Your name"
               value={form.name}
               onChange={(event) => setForm({ ...form, name: event.target.value })}
-              className="w-full rounded-lg border border-line bg-card px-4 py-3 text-sm text-fg outline-none placeholder:text-muted focus:border-[#00d181]/50"
+              className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm text-fg outline-none placeholder:text-muted focus:border-[#00d181]/50"
             />
           </div>
 
@@ -61,7 +62,7 @@ export default function Contact() {
               placeholder="you@example.com"
               value={form.email}
               onChange={(event) => setForm({ ...form, email: event.target.value })}
-              className="w-full rounded-lg border border-line bg-card px-4 py-3 text-sm text-fg outline-none placeholder:text-muted focus:border-[#00d181]/50"
+              className="w-full rounded-xl border border-line bg-card px-4 py-3 text-sm text-fg outline-none placeholder:text-muted focus:border-[#00d181]/50"
             />
           </div>
 
@@ -76,14 +77,14 @@ export default function Contact() {
               placeholder="How can we help?"
               value={form.message}
               onChange={(event) => setForm({ ...form, message: event.target.value })}
-              className="w-full resize-none rounded-lg border border-line bg-card px-4 py-3 text-sm text-fg outline-none placeholder:text-muted focus:border-[#00d181]/50"
+              className="w-full resize-none rounded-xl border border-line bg-card px-4 py-3 text-sm text-fg outline-none placeholder:text-muted focus:border-[#00d181]/50"
             />
           </div>
 
           <button
             type="submit"
             disabled={submitting}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891] disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitting ? <Spinner className="h-4 w-4" /> : <Send size={16} />}
             {submitting ? 'Sending…' : 'Send Message'}

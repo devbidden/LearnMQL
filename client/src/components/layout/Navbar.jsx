@@ -7,6 +7,12 @@ import { useTheme } from '../../context/ThemeContext'
 import Spinner from '../ui/Spinner'
 import BrandLogo from './BrandLogo'
 
+function navClass(isActive) {
+  return `rounded-full px-3.5 py-2 text-sm font-medium transition ${
+    isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
+  }`
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const { user, isAuthenticated, loading, logout } = useAuth()
@@ -20,55 +26,33 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-page/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-line bg-[color:var(--lm-nav)] backdrop-blur-xl">
+      <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-5 lg:px-8">
         <BrandLogo onClick={() => setOpen(false)} />
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
           {navLinks.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === '/'}
-              className={({ isActive }) =>
-                `rounded-lg px-4 py-2 text-sm font-medium transition ${isActive
-                  ? 'bg-[#00d181]/10 text-[#00d181]'
-                  : 'text-muted hover:text-fg'
-                }`
-              }
-            >
+            <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => navClass(isActive)}>
               {label}
             </NavLink>
           ))}
           {isAuthenticated && (
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                `rounded-lg px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
-                }`
-              }
-            >
+            <NavLink to="/dashboard" className={({ isActive }) => navClass(isActive)}>
               My courses
             </NavLink>
           )}
           {user?.role === 'admin' && (
-            <NavLink
-              to="/admin"
-              className={({ isActive }) =>
-                `rounded-lg px-4 py-2 text-sm font-medium transition ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted hover:text-fg'
-                }`
-              }
-            >
+            <NavLink to="/admin" className={({ isActive }) => navClass(isActive)}>
               Admin
             </NavLink>
           )}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <button
             type="button"
             onClick={toggleTheme}
-            className="grid h-10 w-10 place-items-center rounded-lg text-muted transition hover:bg-card hover:text-fg"
+            className="grid h-10 w-10 place-items-center rounded-full text-muted transition hover:bg-card hover:text-fg"
             aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
           >
             {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
@@ -79,14 +63,14 @@ export default function Navbar() {
             <>
               <Link
                 to="/dashboard"
-                className="px-3 py-2 text-sm font-medium text-muted transition hover:text-fg"
+                className="rounded-full px-3 py-2 text-sm font-medium text-muted transition hover:text-fg"
               >
                 Hi, {user?.name?.split(' ')[0]}
               </Link>
               <button
                 type="button"
                 onClick={handleLogout}
-                className="rounded-lg bg-[#00d181] px-4 py-2 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
+                className="rounded-full bg-[#00d181] px-4 py-2 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
               >
                 Log out
               </button>
@@ -95,21 +79,21 @@ export default function Navbar() {
             <>
               <Link
                 to="/login"
-                className="px-3 py-2 text-sm font-medium text-muted transition hover:text-fg"
+                className="rounded-full border border-line px-4 py-2 text-sm font-medium text-fg transition hover:border-[#00d181]/40"
               >
                 Log in
               </Link>
               <Link
                 to="/register"
-                className="rounded-lg bg-[#00d181] px-4 py-2 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
+                className="rounded-full bg-[#00d181] px-4 py-2 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
               >
-                Sign up
+                Get started
               </Link>
             </>
           )}
         </div>
 
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 lg:hidden">
           <button
             type="button"
             onClick={toggleTheme}
@@ -130,7 +114,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-page px-5 py-4 md:hidden">
+        <div className="border-t border-line bg-page px-5 py-4 lg:hidden">
           <nav className="flex flex-col gap-1">
             {navLinks.map(({ to, label }) => (
               <NavLink
@@ -139,8 +123,7 @@ export default function Navbar() {
                 end={to === '/'}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-4 py-3 text-sm font-medium ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted'
-                  }`
+                  `rounded-xl px-4 py-3 text-sm font-medium ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted'}`
                 }
               >
                 {label}
@@ -151,7 +134,7 @@ export default function Navbar() {
                 to="/dashboard"
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-4 py-3 text-sm font-medium ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted'}`
+                  `rounded-xl px-4 py-3 text-sm font-medium ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted'}`
                 }
               >
                 My courses
@@ -162,7 +145,7 @@ export default function Navbar() {
                 to="/admin"
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-4 py-3 text-sm font-medium ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted'}`
+                  `rounded-xl px-4 py-3 text-sm font-medium ${isActive ? 'bg-[#00d181]/10 text-[#00d181]' : 'text-muted'}`
                 }
               >
                 Admin
@@ -178,7 +161,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="rounded-lg bg-[#00d181] px-4 py-3 text-center text-sm font-semibold text-[#0b0e11]"
+                className="rounded-full bg-[#00d181] px-4 py-3 text-center text-sm font-semibold text-[#0b0e11]"
               >
                 Log out
               </button>
@@ -187,16 +170,16 @@ export default function Navbar() {
                 <Link
                   to="/login"
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-4 py-3 text-center text-sm font-medium text-muted"
+                  className="rounded-full border border-line px-4 py-3 text-center text-sm font-medium text-fg"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/register"
                   onClick={() => setOpen(false)}
-                  className="rounded-lg bg-[#00d181] px-4 py-3 text-center text-sm font-semibold text-[#0b0e11]"
+                  className="rounded-full bg-[#00d181] px-4 py-3 text-center text-sm font-semibold text-[#0b0e11]"
                 >
-                  Sign up
+                  Get started
                 </Link>
               </>
             )}

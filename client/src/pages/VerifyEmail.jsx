@@ -48,7 +48,7 @@ export default function VerifyEmail() {
                         <p className="mt-3 text-muted">Your account is now active. You're signed in and ready to go.</p>
                         <Link
                             to="/dashboard"
-                            className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
+                            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
                         >
                             Go to dashboard
                         </Link>
@@ -62,7 +62,7 @@ export default function VerifyEmail() {
                         <p className="mt-3 text-muted">{message}</p>
                         <Link
                             to="/login"
-                            className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
+                            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
                         >
                             Back to login
                         </Link>

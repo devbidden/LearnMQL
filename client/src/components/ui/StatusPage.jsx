@@ -29,14 +29,14 @@ export default function StatusPage({
             <button
               type="button"
               onClick={onRetry}
-              className="inline-flex min-w-[140px] items-center justify-center rounded-lg bg-[#00d181] px-5 py-2.5 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
+              className="inline-flex min-w-[140px] items-center justify-center rounded-full bg-[#00d181] px-5 py-2.5 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
             >
               Try again
             </button>
           )}
           <Primary
             {...primaryProps}
-            className={`inline-flex min-w-[140px] items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold transition ${
+            className={`inline-flex min-w-[140px] items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition ${
               onRetry
                 ? 'border border-line text-fg hover:border-[#00d181]/40 hover:text-[#00d181]'
                 : 'bg-[#00d181] text-[#0b0e11] hover:bg-[#00e891]'
@@ -47,7 +47,7 @@ export default function StatusPage({
           {secondaryTo && (
             <Secondary
               {...secondaryProps}
-              className="inline-flex min-w-[140px] items-center justify-center rounded-lg border border-line px-5 py-2.5 text-sm font-semibold text-fg transition hover:border-[#00d181]/40 hover:text-[#00d181]"
+              className="inline-flex min-w-[140px] items-center justify-center rounded-full border border-line px-5 py-2.5 text-sm font-semibold text-fg transition hover:border-[#00d181]/40 hover:text-[#00d181]"
             >
               {secondaryLabel}
             </Secondary>

@@ -5,32 +5,33 @@ const icons = [TrendingUp, Code2, BarChart3]
 
 export default function About() {
   return (
-    <section className="py-16 lg:py-20">
+    <section className="py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
-        <h1 className="text-4xl font-bold text-fg">About LearnMQL5</h1>
-        <p className="mt-6 text-base leading-7 text-muted">
+        <p className="eyebrow">Company</p>
+        <h1 className="display-title mt-4 text-5xl font-bold text-fg">About LearnMQL5</h1>
+        <p className="mt-6 text-base leading-7 text-muted sm:text-lg">
           I&apos;m a trader and MQL5 developer with over 5 years of experience building automated
           trading systems. LearnMQL5 is where I share the bots and knowledge I&apos;ve built along
           the way.
         </p>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
           {aboutStats.map(({ label, value }, index) => {
             const Icon = icons[index]
             return (
               <div
                 key={label}
-                className="rounded-xl border border-line bg-card p-6 text-center"
+                className="rounded-[1.5rem] border border-line bg-card p-6 text-center"
               >
                 <Icon className="mx-auto h-6 w-6 text-[#00d181]" />
-                <p className="mt-4 text-xl font-bold text-fg">{value}</p>
+                <p className="display-title mt-4 text-2xl font-bold text-fg">{value}</p>
                 <p className="mt-1 text-xs text-muted">{label}</p>
               </div>
             )
           })}
         </div>
 
-        <h2 className="mt-16 text-2xl font-bold text-fg">My Mission</h2>
+        <h2 className="mt-16 text-3xl font-bold tracking-tight text-fg">My mission</h2>
         <p className="mt-4 text-base leading-7 text-muted">
           I believe every trader deserves access to professional-grade automation tools without
           needing a computer science degree. My bots are designed with risk management built in,

@@ -37,10 +37,10 @@ export const courses = [
 ]
 
 export const stats = [
-  { label: 'Active Bots', value: '12+' },
   { label: 'Students', value: '840+' },
-  { label: 'Profit Rate', value: '73.4%' },
-  { label: 'Uptime', value: '99.7%' },
+  { label: 'Lessons with quizzes', value: '18+' },
+  { label: 'Trading experience', value: '5+ yrs' },
+  { label: 'Bots available', value: '12+' },
 ]
 
 export const aboutStats = [
@@ -86,26 +86,26 @@ export const reviews = [
 
 export const features = [
   {
-    title: 'Battle-Tested Bots',
-    description:
-      'Every bot is backtested across multiple market conditions and optimized for real account performance.',
-  },
-  {
     title: 'Hands-On Courses',
     description:
-      'Learn by building real trading systems. No fluff—just practical MQL5 and strategy development.',
+      'Learn by building real trading systems. No fluff—just practical MQL5, quizzes, and strategy development.',
   },
   {
     title: 'Risk-First Approach',
     description:
-      'All bots include built-in risk management with configurable drawdown limits and position sizing.',
+      'Every lesson treats risk as part of the system: drawdown limits, position sizing, and code you can audit.',
+  },
+  {
+    title: 'Optional Ready-Made Bots',
+    description:
+      'Need a working example on the chart? Our Expert Advisors are there as a reference while you learn.',
   },
 ]
 
 export const navLinks = [
   { to: '/', label: 'Home' },
-  { to: '/bots', label: 'Bots' },
   { to: '/courses', label: 'Courses' },
+  { to: '/bots', label: 'Bots' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ]

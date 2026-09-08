@@ -1,24 +1,24 @@
-import { Bot, GraduationCap, Shield, TrendingUp } from 'lucide-react'
 import { stats } from '../../data/mockData'
-
-const icons = [Bot, GraduationCap, TrendingUp, Shield]
 
 export default function StatsBar() {
   return (
-    <section className="border-y border-line bg-page">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-5 py-8 sm:grid-cols-4 lg:px-8">
-        {stats.map(({ label, value }, index) => {
-          const Icon = icons[index]
-          return (
-            <div key={label} className="flex items-center justify-center gap-3">
-              <Icon className="h-5 w-5 shrink-0 text-[#00d181]" />
-              <div>
-                <p className="text-lg font-bold text-fg">{value}</p>
-                <p className="text-xs text-muted">{label}</p>
-              </div>
+    <section className="border-t border-line py-12 lg:py-14">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <p className="eyebrow">By the numbers</p>
+        <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">
+          Built by a trader, taught to traders
+        </h2>
+        <p className="mt-3 max-w-2xl text-muted">
+          Courses that take you from first lines of MQL5 to a working Expert Advisor — with optional bots if you want a running example.
+        </p>
+        <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-4">
+          {stats.map(({ label, value }) => (
+            <div key={label}>
+              <p className="display-title text-4xl font-bold text-fg sm:text-5xl">{value}</p>
+              <p className="mt-2 text-sm text-muted">{label}</p>
             </div>
-          )
-        })}
+          ))}
+        </div>
       </div>
     </section>
   )

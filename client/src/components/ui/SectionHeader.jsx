@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
-export default function SectionHeader({ title, subtitle, linkTo, linkLabel = 'View all' }) {
+export default function SectionHeader({ eyebrow, title, subtitle, linkTo, linkLabel = 'View all' }) {
   return (
-    <div className="mb-8 flex items-end justify-between gap-4">
-      <div>
-        <h2 className="text-2xl font-bold text-fg sm:text-3xl">{title}</h2>
-        {subtitle && <p className="mt-1 text-sm text-muted">{subtitle}</p>}
+    <div className="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="max-w-2xl">
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+        <h2 className="display-title mt-3 text-3xl font-bold text-fg sm:text-4xl">{title}</h2>
+        {subtitle && <p className="mt-3 text-sm leading-6 text-muted sm:text-base">{subtitle}</p>}
       </div>
       {linkTo && (
         <Link

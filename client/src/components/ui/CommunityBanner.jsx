@@ -18,8 +18,8 @@ export default function CommunityBanner({ compact = false }) {
       href={telegramUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative block overflow-hidden rounded-2xl border border-[#2AABEE]/30 bg-gradient-to-r from-[#0d2a3a] via-[#123347] to-[#0b3d2e] ${
-        compact ? 'p-5' : 'p-6 sm:p-8'
+      className={`group relative block overflow-hidden rounded-[1.75rem] border border-[#2AABEE]/30 bg-gradient-to-r from-[#0d2a3a] via-[#123347] to-[#0b3d2e] ${
+        compact ? 'p-5' : 'p-8 sm:p-10'
       } transition hover:border-[#2AABEE]/60 hover:shadow-[0_16px_40px_rgba(42,171,238,0.18)]`}
     >
       <div className="pointer-events-none absolute -right-8 -top-10 h-40 w-40 rounded-full bg-[#2AABEE]/20 blur-3xl transition group-hover:bg-[#2AABEE]/30" />
@@ -31,7 +31,7 @@ export default function CommunityBanner({ compact = false }) {
           </span>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">Telegram community</p>
-            <h2 className={`mt-1 font-bold text-white ${compact ? 'text-lg' : 'text-2xl'}`}>
+            <h2 className={`mt-1 font-bold tracking-tight text-white ${compact ? 'text-lg' : 'text-3xl'}`}>
               Join the LearnMQL5 community
             </h2>
             <p className="mt-1 max-w-xl text-sm leading-6 text-[#c5d7e2]">
@@ -39,7 +39,7 @@ export default function CommunityBanner({ compact = false }) {
             </p>
           </div>
         </div>
-        <span className="inline-flex shrink-0 items-center gap-2 self-start rounded-lg bg-[#2AABEE] px-5 py-2.5 text-sm font-semibold text-white transition group-hover:bg-[#3bb6f5] md:self-center">
+        <span className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-[#2AABEE] px-5 py-2.5 text-sm font-semibold text-white transition group-hover:bg-[#3bb6f5] md:self-center">
           Join channel
           <ArrowRight size={16} />
         </span>

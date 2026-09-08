@@ -85,7 +85,7 @@ export default function ResetPassword() {
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891] disabled:cursor-not-allowed disabled:opacity-60"
                     >
                         {submitting ? (
                             <>
