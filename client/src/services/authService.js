@@ -1,15 +1,21 @@
 const API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth`
 
 async function request(path, options = {}) {
+    const { allowUnauthorized = false, ...fetchOptions } = options
+
     const res = await fetch(`${API_URL}${path}`, {
         credentials: 'include',
-        headers: { 'Content-Type': 'application/json', ...options.headers },
-        ...options,
+        headers: { 'Content-Type': 'application/json', ...fetchOptions.headers },
+        ...fetchOptions,
     })
 
     const data = await res.json().catch(() => ({}))
 
     if (!res.ok) {
+        if (allowUnauthorized && res.status === 401) {
+            return null
+        }
+
         const error = new Error(data.message || 'Something went wrong')
         error.status = res.status
         error.code = data.code
@@ -38,7 +44,7 @@ export function logout() {
 }
 
 export function getMe() {
-    return request('/me', { method: 'GET' })
+    return request('/me', { method: 'GET', allowUnauthorized: true })
 }
 
 export function forgotPassword(email) {

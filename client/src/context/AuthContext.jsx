@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
         setSessionError(null)
         try {
             const data = await authService.getMe()
-            setUser(data.user)
+            setUser(data ? data.user : null)
         } catch (err) {
             setUser(null)
             if (err.status && err.status !== 401) {

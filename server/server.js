@@ -11,9 +11,8 @@ const webhook = require("./rapi/webhook");
 async function startServer() { 
     try {
         await connectDB();
-        connectcloudinary();
-        verifyEmailTransport();
-        app.use("/api/webhook", webhook);
+        await connectcloudinary();
+        await verifyEmailTransport();
         app.listen(PORT, () => {
             console.log(`Server running on port ${PORT}`);
         });
