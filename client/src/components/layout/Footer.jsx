@@ -7,9 +7,9 @@ const columns = [
   {
     title: 'Product',
     links: [
-      { to: '/courses', label: 'Courses' },
-      { to: '/bots', label: 'Trading bots' },
-      { to: '/register', label: 'Get started' },
+      { to: '/courses', label: 'MQL4 & MQL5 courses' },
+      { to: '/bots', label: 'Expert Advisors & bots' },
+      { to: '/register', label: 'Create a free account' },
     ],
   },
   {
@@ -30,13 +30,13 @@ export default function Footer() {
           <div>
             <BrandLogo />
             <p className="mt-4 max-w-xs text-sm leading-6 text-muted">
-              Premium MQL5 courses to help you automate and master the markets — plus optional trading bots.
+              Learn MQL4 and MQL5 programming, Expert Advisors, and automated trading for MetaTrader.
             </p>
           </div>
 
           {columns.map((column) => (
-            <div key={column.title}>
-              <h4 className="text-sm font-semibold text-fg">{column.title}</h4>
+            <nav key={column.title} aria-label={column.title}>
+              <p className="text-sm font-semibold text-fg">{column.title}</p>
               <ul className="mt-4 space-y-2.5">
                 {column.links.map(({ to, label }) => (
                   <li key={to}>
@@ -46,11 +46,11 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
 
           <div>
-            <h4 className="text-sm font-semibold text-fg">Connect</h4>
+            <p className="text-sm font-semibold text-fg">Connect</p>
             <a
               href="mailto:hello@learnmql5.com"
               className="mt-4 inline-flex items-center gap-2 text-sm text-muted transition hover:text-[#00d181]"
@@ -71,7 +71,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} LearnMQL5. All rights reserved.</p>
-          <p>MQL5 courses for MetaTrader 5. Bots optional.</p>
+          <p>MQL4 &amp; MQL5 courses for MetaTrader. Bots optional.</p>
         </div>
       </div>
     </footer>

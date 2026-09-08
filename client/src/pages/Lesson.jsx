@@ -6,6 +6,7 @@ import * as courseService from '../services/courseService'
 import { useProgress } from '../hooks/useProgress'
 import PageLoader from '../components/ui/PageLoader'
 import NotFound from './NotFound'
+import Seo from '../components/seo/Seo'
 
 export default function Lesson() {
   const { slug, lessonId } = useParams()
@@ -79,6 +80,7 @@ export default function Lesson() {
 
   return (
     <section className="py-12 lg:py-16">
+      <Seo title={`${lesson.title} · ${course.title}`} description={`Lesson in ${course.title} on LearnMQL5.`} noindex />
       <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[240px_1fr] lg:px-8">
         <aside className="hidden lg:block">
           <Link

@@ -8,9 +8,9 @@ const tabs = [
     icon: BookOpen,
     title: 'Learn to build your own EAs',
     points: [
-      'Go from MQL5 basics to a working Expert Advisor',
+      'Go from MQL4 or MQL5 basics to a working Expert Advisor',
       'Quizzes after every lesson to lock in what you learned',
-      'No fluff — practical coding and strategy development',
+      'Practical coding and strategy development',
       'Track progress from first lesson to certificate',
     ],
   },
@@ -47,7 +47,7 @@ const tabs = [
       'Telegram updates when new lessons drop',
       'Talk through stuck quizzes and strategy ideas',
       'Get help when an install or lesson does not click',
-      'Stay accountable with other traders learning MQL5',
+      'Stay accountable with other traders learning MQL4 and MQL5',
     ],
   },
   {
@@ -74,7 +74,7 @@ export default function PlatformShowcase() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <p className="eyebrow">The curriculum</p>
         <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">
-          Courses first. Automation you understand.
+          Learn MQL4 &amp; MQL5, then automate
         </h2>
 
         <div className="mt-8 flex flex-wrap gap-2 border-b border-line pb-3">

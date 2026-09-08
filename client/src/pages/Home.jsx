@@ -14,6 +14,9 @@ import PlatformShowcase from '../components/ui/PlatformShowcase'
 import CoverageSplit from '../components/ui/CoverageSplit'
 import { bots, reviews } from '../data/mockData'
 import * as courseService from '../services/courseService'
+import Seo from '../components/seo/Seo'
+import { organizationJsonLd, websiteJsonLd, courseListJsonLd } from '../seo/jsonLd'
+import { PAGE_SEO } from '../seo/pages'
 
 export default function Home() {
   const featuredBot = bots.find((bot) => bot.featured) ?? bots[0]
@@ -53,18 +56,28 @@ export default function Home() {
 
   return (
     <>
+      <Seo
+        title={PAGE_SEO.home.title}
+        description={PAGE_SEO.home.description}
+        path={PAGE_SEO.home.path}
+        jsonLd={[organizationJsonLd(), websiteJsonLd(), courseListJsonLd(featuredCourses)]}
+      />
       <section className="hero-grid relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,209,129,0.14),transparent_55%)]" />
         <div className="relative mx-auto max-w-5xl px-5 pb-4 pt-12 text-center lg:px-8 lg:pt-16">
-          <p className="text-sm font-medium text-muted">MQL5 courses · quizzes · Expert Advisors</p>
+          <p className="text-sm font-medium text-muted">MQL4 &amp; MQL5 courses · MetaTrader · Expert Advisors</p>
 
           <h1 className="display-title mx-auto mt-4 max-w-4xl text-5xl font-bold text-fg sm:text-6xl lg:text-7xl">
-            Learn to code the{' '}
-            <span className="gradient-text">bots you trade</span>
+            Learn MQL4 &amp; MQL5.{' '}
+            <span className="gradient-text">Automate your trading.</span>
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-            Expert-led MQL5 courses that take you from first script to a working Expert Advisor. Ready-made bots are there if you want a head start.
+            Expert-led{' '}
+            <Link to="/courses" className="font-medium text-[#00d181] hover:underline">
+              MQL4 and MQL5 courses
+            </Link>{' '}
+            for MetaTrader. Go from first script to a working Expert Advisor, indicator, or trading bot.
           </p>
 
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -79,7 +92,7 @@ export default function Home() {
               to="/bots"
               className="inline-flex items-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-fg transition hover:border-[#00d181]/50 hover:bg-[#00d181]/5"
             >
-              Explore bots
+              Explore Expert Advisors
               <span className="kbd-chip">b</span>
             </Link>
           </div>
@@ -94,9 +107,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeader
             eyebrow="Learn to build"
-            title="Popular courses"
-            subtitle="Step-by-step MQL5 training. Each lesson ends with a quiz so you know it stuck."
+            title="Popular MQL4 & MQL5 courses"
+            subtitle="Step-by-step MetaTrader programming. Each lesson ends with a quiz so you know it stuck."
             linkTo="/courses"
+            linkLabel="Browse all courses"
           />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {featuredCourses.map((course) => (
@@ -113,7 +127,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow">Reviews</p>
           <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">
-            What students say
+            What students say about our MQL courses
           </h2>
           <div className="mt-8">
             <ReviewsSlider reviews={reviews} />
@@ -127,9 +141,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeader
             eyebrow="Also available"
-            title="Trading bots"
-            subtitle="Optional ready-made systems if you want something running while you learn."
+            title="Expert Advisors and trading bots"
+            subtitle="Optional ready-made systems if you want something running while you learn to code."
             linkTo="/bots"
+            linkLabel="View trading bots"
           />
           <BotCard bot={featuredBot} />
         </div>

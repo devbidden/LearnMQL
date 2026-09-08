@@ -3,6 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import * as enrollmentService from '../services/enrollmentService'
 import { useProgress } from '../hooks/useProgress'
 import PageLoader from '../components/ui/PageLoader'
+import Seo from '../components/seo/Seo'
 
 export default function PaymentCallback() {
   const [searchParams] = useSearchParams()
@@ -42,6 +43,7 @@ export default function PaymentCallback() {
   if (error) {
     return (
       <section className="mx-auto max-w-lg px-5 py-24 text-center">
+        <Seo title="Payment" description="Payment status for your LearnMQL5 enrollment." noindex />
         <h1 className="text-2xl font-bold text-fg">Payment not completed</h1>
         <p className="mt-4 text-sm text-red-400">{error}</p>
         <Link to="/courses" className="mt-8 inline-block text-[#00d181] hover:underline">
@@ -51,5 +53,10 @@ export default function PaymentCallback() {
     )
   }
 
-  return <PageLoader label="Confirming your payment…" />
+  return (
+    <>
+      <Seo title="Payment" description="Confirming your LearnMQL5 payment." noindex />
+      <PageLoader label="Confirming your payment…" />
+    </>
+  )
 }

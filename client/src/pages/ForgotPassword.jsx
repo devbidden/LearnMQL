@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import Spinner from '../components/ui/Spinner'
 import BrandLogo from '../components/layout/BrandLogo'
+import Seo from '../components/seo/Seo'
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState('')
@@ -28,6 +29,7 @@ export default function ForgotPassword() {
 
     return (
         <section className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-5 py-16">
+            <Seo title="Forgot password" description="Reset your LearnMQL5 password." noindex />
             <div className="w-full max-w-md">
                 <div className="text-center">
                     <BrandLogo compact />

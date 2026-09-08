@@ -8,6 +8,8 @@ import NotFound from './NotFound'
 import CertificateCard from '../components/ui/CertificateCard'
 import CommunityBanner from '../components/ui/CommunityBanner'
 import { useAuth } from '../hooks/useAuth'
+import Seo from '../components/seo/Seo'
+import { coursePageTitle } from '../seo/courseMeta'
 
 export default function LearnCourse() {
   const { slug } = useParams()
@@ -64,6 +66,7 @@ export default function LearnCourse() {
 
   return (
     <section className="py-16 lg:py-20">
+      <Seo title={coursePageTitle(course)} description={`Continue ${course.title} on LearnMQL5.`} noindex />
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <Link
           to="/dashboard"

@@ -86,9 +86,9 @@ export const reviews = [
 
 export const features = [
   {
-    title: 'Hands-On Courses',
+    title: 'Hands-On MQL4 & MQL5 Courses',
     description:
-      'Learn by building real trading systems. No fluff—just practical MQL5, quizzes, and strategy development.',
+      'Learn MQL4 and MQL5 by building real Expert Advisors. Practical MetaTrader programming, quizzes, and strategy development.',
   },
   {
     title: 'Risk-First Approach',

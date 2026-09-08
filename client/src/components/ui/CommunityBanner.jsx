@@ -31,9 +31,9 @@ export default function CommunityBanner({ compact = false }) {
           </span>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">Telegram community</p>
-            <h2 className={`mt-1 font-bold tracking-tight text-white ${compact ? 'text-lg' : 'text-3xl'}`}>
+            <p className={`mt-1 font-bold tracking-tight text-white ${compact ? 'text-lg' : 'text-3xl'}`}>
               Join the LearnMQL5 community
-            </h2>
+            </p>
             <p className="mt-1 max-w-xl text-sm leading-6 text-[#c5d7e2]">
               Get bot updates, course drops, and talk strategy with other traders in our Telegram channel.
             </p>

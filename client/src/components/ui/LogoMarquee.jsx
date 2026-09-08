@@ -1,4 +1,4 @@
-const partners = ['MetaTrader 5', 'MQL5.com', 'MetaQuotes', 'Telegram', 'Forex', 'Indices', 'Gold', 'Crypto']
+const partners = ['MetaTrader 4', 'MetaTrader 5', 'MQL4', 'MQL5', 'MetaQuotes', 'Forex', 'Indices', 'Gold']
 
 export default function LogoMarquee() {
   const loop = [...partners, ...partners]
@@ -6,7 +6,7 @@ export default function LogoMarquee() {
   return (
     <section className="border-y border-line py-6">
       <div className="mx-auto max-w-7xl px-5 text-center lg:px-8">
-        <p className="text-sm text-muted">Learn on MetaTrader 5, the platform you already use</p>
+        <p className="text-sm text-muted">Learn MetaTrader 4 and MetaTrader 5 programming on the platform you already use</p>
       </div>
       <div className="logo-marquee mt-4">
         <div className="logo-marquee-track">

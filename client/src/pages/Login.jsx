@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import Spinner from '../components/ui/Spinner'
 import BrandLogo from '../components/layout/BrandLogo'
+import Seo from '../components/seo/Seo'
+import { PAGE_SEO } from '../seo/pages'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -29,6 +31,7 @@ export default function Login() {
 
   return (
     <section className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-5 py-16">
+      <Seo title={PAGE_SEO.login.title} description={PAGE_SEO.login.description} noindex />
       <div className="w-full max-w-md">
         <div className="text-center">
           <BrandLogo compact />

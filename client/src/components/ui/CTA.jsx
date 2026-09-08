@@ -11,14 +11,14 @@ export default function CTA() {
               Start the course. Build the bot.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted">
-              Enroll, pass the quizzes, and ship an Expert Advisor you actually understand.
+              Enroll, pass the quizzes, and ship an Expert Advisor in MQL4 or MQL5 that you actually understand.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 to="/courses"
                 className="inline-flex items-center rounded-full bg-[#00d181] px-6 py-3 text-sm font-semibold text-[#0b0e11] transition hover:bg-[#00e891]"
               >
-                Browse courses
+Browse MQL4 & MQL5 courses
               </Link>
               <Link
                 to="/register"

@@ -3,6 +3,10 @@ import CourseCard from '../components/ui/CourseCard'
 import CommunityBanner from '../components/ui/CommunityBanner'
 import PageLoader from '../components/ui/PageLoader'
 import * as courseService from '../services/courseService'
+import Seo from '../components/seo/Seo'
+import Breadcrumbs from '../components/seo/Breadcrumbs'
+import { courseListJsonLd } from '../seo/jsonLd'
+import { PAGE_SEO } from '../seo/pages'
 
 export default function Courses() {
   const [courses, setCourses] = useState([])
@@ -29,11 +33,23 @@ export default function Courses() {
 
   return (
     <section className="py-20 lg:py-28">
+      <Seo
+        title={PAGE_SEO.courses.title}
+        description={PAGE_SEO.courses.description}
+        path={PAGE_SEO.courses.path}
+        jsonLd={courseListJsonLd(courses)}
+      />
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <p className="eyebrow">Product</p>
-        <h1 className="display-title mt-4 text-5xl font-bold text-fg">Courses</h1>
+        <Breadcrumbs
+          items={[
+            { name: 'Home', path: '/' },
+            { name: 'MQL4 & MQL5 courses', path: '/courses' },
+          ]}
+        />
+        <p className="eyebrow mt-6">Product</p>
+        <h1 className="display-title mt-4 text-5xl font-bold text-fg">MQL4 &amp; MQL5 courses</h1>
         <p className="mt-4 max-w-2xl text-muted sm:text-lg">
-          Learn to build and deploy trading bots with our step-by-step courses. Each module ends with a quiz so you can track real progress.
+          Learn MetaTrader programming step by step: MQL4 and MQL5, Expert Advisor development, indicators, and how to code a trading strategy. Each module ends with a quiz.
         </p>
 
         <div className="mt-8">

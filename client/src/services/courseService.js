@@ -76,6 +76,7 @@ export function normalizeCourse(course) {
         duration: course.duration,
         status: course.status,
         featured: course.featured,
+        category: course.category,
         modules: (course.modules || []).map(normalizeModule),
     }
 }

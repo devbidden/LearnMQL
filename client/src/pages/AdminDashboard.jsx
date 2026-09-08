@@ -14,6 +14,7 @@ import {
 import * as courseService from '../services/courseService'
 import * as userService from '../services/userService'
 import PageLoader from '../components/ui/PageLoader'
+import Seo from '../components/seo/Seo'
 
 export default function AdminDashboard() {
     const navigate = useNavigate()
@@ -101,6 +102,7 @@ export default function AdminDashboard() {
 
     return (
         <section className="py-16 lg:py-20">
+            <Seo title="Admin" description="LearnMQL5 admin." noindex />
             <div className="mx-auto max-w-7xl px-5 lg:px-8">
                 <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
                     <div>

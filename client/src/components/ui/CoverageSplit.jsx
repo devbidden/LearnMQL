@@ -1,12 +1,12 @@
 import { Check } from 'lucide-react'
 
 const left = [
-  'MQL5 programming from scratch',
+  'MQL4 and MQL5 programming from scratch',
   'Build your own Expert Advisors',
+  'How to code a trading strategy',
   'Quizzes after every lesson',
   'Progress tracking and certificates',
-  'Practical strategy development',
-  'No computer-science degree required',
+  'Forex algorithmic trading practice',
   'Support when you get stuck',
   'Telegram community for students',
 ]
@@ -42,10 +42,10 @@ export default function CoverageSplit() {
     <section className="border-t border-line py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <h2 className="display-title max-w-3xl text-4xl font-bold text-fg sm:text-5xl">
-          Learn the craft. Use a bot if you need one.
+          Learn MetaTrader programming. Use a bot if you need one.
         </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <Column kicker="Courses" title="Write the strategy yourself" items={left} />
+          <Column kicker="Courses" title="MQL4 & MQL5: write the strategy yourself" items={left} />
           <Column kicker="Bots" title="Optional systems on the side" items={right} />
         </div>
       </div>

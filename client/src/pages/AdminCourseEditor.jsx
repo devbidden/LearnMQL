@@ -10,6 +10,7 @@ import {
 import * as courseService from '../services/courseService'
 import * as uploadService from '../services/uploadService'
 import PageLoader from '../components/ui/PageLoader'
+import Seo from '../components/seo/Seo'
 
 const emptyCourse = {
   title: '',
@@ -280,6 +281,7 @@ export default function AdminCourseEditor() {
 
   return (
     <section className="py-12 lg:py-16">
+      <Seo title="Course editor" description="Edit a LearnMQL5 course." noindex />
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Link
           to="/admin"

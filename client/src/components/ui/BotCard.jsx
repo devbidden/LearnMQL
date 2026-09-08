@@ -25,7 +25,7 @@ export default function BotCard({ bot }) {
         rel="noopener noreferrer"
         className="inline-flex w-fit items-center gap-2 rounded-full border border-line px-4 py-2.5 text-sm font-medium text-fg transition hover:border-[#00d181]/50 hover:bg-[#00d181]/5"
       >
-        View on MQL5
+        View {bot.name} on MQL5
         <ArrowRight size={16} />
       </a>
     </article>

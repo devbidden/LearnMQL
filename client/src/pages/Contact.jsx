@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { Send } from 'lucide-react'
 import Spinner from '../components/ui/Spinner'
+import Seo from '../components/seo/Seo'
+import Breadcrumbs from '../components/seo/Breadcrumbs'
+import { PAGE_SEO } from '../seo/pages'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -23,11 +26,22 @@ export default function Contact() {
 
   return (
     <section className="py-20 lg:py-28">
+      <Seo
+        title={PAGE_SEO.contact.title}
+        description={PAGE_SEO.contact.description}
+        path={PAGE_SEO.contact.path}
+      />
       <div className="mx-auto max-w-lg px-5 lg:px-8">
         <div className="text-center">
-          <p className="eyebrow">Contact</p>
+          <Breadcrumbs
+            items={[
+              { name: 'Home', path: '/' },
+              { name: 'Contact', path: '/contact' },
+            ]}
+          />
+          <p className="eyebrow mt-6">Contact</p>
           <h1 className="display-title mt-4 text-5xl font-bold text-fg">Get in touch</h1>
-          <p className="mt-4 text-muted">Have a question? Send us a message.</p>
+          <p className="mt-4 text-muted">Questions about MQL4, MQL5, or MetaTrader courses? Send a message.</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-10 space-y-5">

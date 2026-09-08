@@ -17,6 +17,7 @@ import { useProgress } from '../hooks/useProgress'
 import PageLoader from '../components/ui/PageLoader'
 import CertificateCard from '../components/ui/CertificateCard'
 import CommunityBanner from '../components/ui/CommunityBanner'
+import Seo from '../components/seo/Seo'
 
 export default function Dashboard() {
   const { user } = useAuth()
@@ -37,6 +38,7 @@ export default function Dashboard() {
 
   return (
     <section className="py-16 lg:py-20">
+      <Seo title="My courses" description="Your LearnMQL5 course progress." noindex />
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>

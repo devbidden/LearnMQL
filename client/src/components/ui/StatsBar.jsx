@@ -9,7 +9,7 @@ export default function StatsBar() {
           Built by a trader, taught to traders
         </h2>
         <p className="mt-3 max-w-2xl text-muted">
-          Courses that take you from first lines of MQL5 to a working Expert Advisor — with optional bots if you want a running example.
+          Courses that take you from first lines of MQL4 or MQL5 to a working Expert Advisor — with optional bots if you want a running example.
         </p>
         <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-4">
           {stats.map(({ label, value }) => (

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Seo from '../seo/Seo'
 
 export default function StatusPage({
   code,
@@ -18,6 +19,7 @@ export default function StatusPage({
 
   return (
     <section className="flex min-h-[60vh] items-center justify-center px-5 py-16">
+      <Seo title={title} description={message} noindex />
       <div className="w-full max-w-lg text-center">
         {code && (
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#00d181]">{code}</p>

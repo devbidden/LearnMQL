@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, GraduationCap } from 'lucide-react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { GraduationCap } from 'lucide-react'
 import * as courseService from '../services/courseService'
 import * as enrollmentService from '../services/enrollmentService'
 import { useAuth } from '../hooks/useAuth'
 import { useProgress } from '../hooks/useProgress'
 import PageLoader from '../components/ui/PageLoader'
 import NotFound from './NotFound'
+import Seo from '../components/seo/Seo'
+import Breadcrumbs from '../components/seo/Breadcrumbs'
+import { courseJsonLd } from '../seo/jsonLd'
+import { coursePageDescription, coursePageTitle } from '../seo/courseMeta'
 
 export default function CourseDetail() {
   const { slug } = useParams()
@@ -118,16 +122,22 @@ export default function CourseDetail() {
 
   return (
     <section className="py-16 lg:py-20">
+      <Seo
+        title={coursePageTitle(course)}
+        description={coursePageDescription(course)}
+        path={`/courses/${course.slug}`}
+        jsonLd={courseJsonLd(course)}
+      />
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
-        <Link
-          to="/courses"
-          className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-[#00d181]"
-        >
-          <ArrowLeft size={16} />
-          Back to courses
-        </Link>
+        <Breadcrumbs
+          items={[
+            { name: 'Home', path: '/' },
+            { name: 'MQL4 & MQL5 courses', path: '/courses' },
+            { name: course.title, path: `/courses/${course.slug}` },
+          ]}
+        />
 
-        <div className="mt-8 flex h-48 items-center justify-center rounded-xl bg-card">
+        <div className="mt-8 flex h-48 items-center justify-center rounded-xl bg-card" aria-hidden="true">
           <GraduationCap className="h-16 w-16 text-[#4b5563]" />
         </div>
 
@@ -174,12 +184,13 @@ export default function CourseDetail() {
                   : 'Start course'}
         </button>
 
-        <ol className="mt-12 space-y-6">
+        <h2 className="mt-12 text-xl font-semibold text-fg">Course modules</h2>
+        <ol className="mt-6 space-y-6">
           {course.modules.map((module, index) => (
             <li key={module.id} className="rounded-2xl border border-line bg-surface p-5">
-              <h2 className="font-semibold text-fg">
+              <h3 className="font-semibold text-fg">
                 Module {index + 1}: {module.title}
-              </h2>
+              </h3>
               <ul className="mt-3 space-y-2">
                 {module.lessons.map((lesson) => (
                   <li key={lesson.id} className="text-sm text-muted">
