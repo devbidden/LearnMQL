@@ -6,7 +6,6 @@ const connectcloudinary = require("./config/cloudinary").connectcloudinary;
 const { verifyEmailTransport } = require("./utils/email");
 const app = require("./app");
 const PORT = process.env.PORT || 5000;
-const webhook = require("./rapi/webhook");
 
 async function startServer() { 
     try {
