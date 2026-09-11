@@ -10,7 +10,7 @@ export default function FeatureGrid() {
   return (
     <section className="border-t border-line py-12 lg:py-14">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <p className="eyebrow">Why LearnMQL5</p>
+        <p className="eyebrow">Why LearnMQL</p>
         <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">Why learn MQL4 and MQL5 here</h2>
         <p className="mt-3 max-w-xl text-muted">Learn algorithmic trading by building real Expert Advisors. Bots are optional extras, not the main product.</p>
 

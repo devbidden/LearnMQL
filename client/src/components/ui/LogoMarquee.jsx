@@ -1,25 +1,45 @@
-const partners = ['MetaTrader 4', 'MetaTrader 5', 'MQL4', 'MQL5', 'MetaQuotes', 'Forex', 'Indices', 'Gold']
+
+const partners = [
+  {
+    name: 'Python',
+    logo: 'https://cdn.simpleicons.org/python',
+  },
+  {
+    name: 'Node.js',
+    logo: 'https://cdn.simpleicons.org/nodedotjs',
+  },
+  {
+    name: 'MetaQuotes',
+    logo: 'https://cdn.simpleicons.org/github',
+  },
+  {
+    name: 'TradingView',
+    logo: 'https://cdn.simpleicons.org/tradingview',
+  },
+]
 
 export default function LogoMarquee() {
   const loop = [...partners, ...partners]
 
   return (
-    <section className="border-y border-line py-6">
-      <div className="mx-auto max-w-7xl px-5 text-center lg:px-8">
-        <p className="text-sm text-muted">Learn MetaTrader 4 and MetaTrader 5 programming on the platform you already use</p>
-      </div>
-      <div className="logo-marquee mt-4">
+    <section className="border-y border-line py-7">
+      <div className="logo-marquee">
         <div className="logo-marquee-track">
-          {loop.map((name, index) => (
-            <span
-              key={`${name}-${index}`}
-              className="mx-8 shrink-0 text-lg font-semibold tracking-tight text-fg/35 sm:mx-12 sm:text-xl"
+          {loop.map((partner, index) => (
+            <div
+              key={`${ partner.name } -${ index } `}
+              className="mx-10 flex h-10 w-12 shrink-0 items-center justify-center sm:mx-16"
             >
-              {name}
-            </span>
+              <img
+                src={partner.logo}
+                alt=""
+                className="h-8 w-8 opacity-45 grayscale brightness-0 invert transition-opacity duration-300 hover:opacity-80"
+              />
+            </div>
           ))}
         </div>
       </div>
     </section>
   )
 }
+

@@ -65,7 +65,7 @@ export default function Home() {
       <section className="hero-grid relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,209,129,0.14),transparent_55%)]" />
         <div className="relative mx-auto max-w-5xl px-5 pb-4 pt-12 text-center lg:px-8 lg:pt-16">
-          <p className="text-sm font-medium text-muted">MQL4 &amp; MQL5 courses · MetaTrader · Expert Advisors</p>
+          <p className="text-sm font-medium text-muted"></p>
 
           <h1 className="display-title mx-auto mt-4 max-w-4xl text-5xl font-bold text-fg sm:text-6xl lg:text-7xl">
             Learn MQL4 &amp; MQL5.{' '}
@@ -73,7 +73,7 @@ export default function Home() {
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-            Expert-led{' '}
+            {' '}
             <Link to="/courses" className="font-medium text-[#00d181] hover:underline">
               MQL4 and MQL5 courses
             </Link>{' '}
