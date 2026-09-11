@@ -6,7 +6,7 @@ const { enrollInCourse } = require("./enrollment.service");
 
 const getCurrency = () => process.env.BACHS_CURRENCY || process.env.PAYSTACK_CURRENCY || "USD";
 
-const frontendUrl = () => process.env.FRONTEND_URL || "http://localhost:5173";
+const frontendUrl = () => process.env.FRONTEND_URL;
 
 const populateEnrollment = (enrollment) =>
     Enrollment.findById(enrollment._id).populate("course");

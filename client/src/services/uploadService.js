@@ -1,4 +1,4 @@
-const API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}`
+const API_URL = `${import.meta.env.VITE_API_URL || '/api'}`
 
 // multipart upload — don't set a Content-Type header, the browser must set its own boundary
 export async function uploadLessonVideo(file) {
