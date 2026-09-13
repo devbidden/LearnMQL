@@ -12,7 +12,7 @@ export default function BrandLogo({ compact = false, onClick }) {
             />
             {!compact && (
                 <span className="text-lg font-bold tracking-tight">
-                    Learn<span className="text-[#00d181]">MQL5</span>
+                    Learn<span className="text-[#00d181]">MQL</span>
                 </span>
             )}
         </Link>
