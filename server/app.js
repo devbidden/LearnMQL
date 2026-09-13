@@ -48,7 +48,7 @@ app.get('/api/health', (req, res) => {
 
     res.status(connected ? 200 : 503).json({
         success: connected,
-        service: 'learn-mql-api',
+        service: 'learn-mql-apix',
         database: {
             process: process.env.MONGODB_URL,
             state: states[readyState] || 'unknown',
