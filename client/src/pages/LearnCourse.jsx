@@ -66,7 +66,7 @@ export default function LearnCourse() {
 
   return (
     <section className="py-16 lg:py-20">
-      <Seo title={coursePageTitle(course)} description={`Continue ${course.title} on LearnMQL5.`} noindex />
+      <Seo title={coursePageTitle(course)} description={`Continue ${course.title} on learnmql.`} noindex />
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <Link
           to="/dashboard"

@@ -25,7 +25,7 @@ export default function CertificateCard({ name, courseTitle }) {
       await downloadCertificate({
         name,
         courseTitle,
-        fileName: `LearnMQL5-${safe || 'certificate'}.png`,
+        fileName: `learnmql-${safe || 'certificate'}.png`,
       })
     } catch (err) {
       setError(err.message || 'Download failed')

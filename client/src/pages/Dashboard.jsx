@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   return (
     <section className="py-16 lg:py-20">
-      <Seo title="My courses" description="Your LearnMQL5 course progress." noindex />
+      <Seo title="My courses" description="Your learnmql course progress." noindex />
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>

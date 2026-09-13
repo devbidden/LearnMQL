@@ -22,6 +22,7 @@ const emptyCourse = {
   duration: '',
   status: 'draft',
   featured: false,
+  thumbnail: '',
 }
 
 const emptyQuestion = () => ({
@@ -64,6 +65,7 @@ export default function AdminCourseEditor() {
   const [openModule, setOpenModule] = useState(null)
   const [openLesson, setOpenLesson] = useState(null)
   const [slugLocked, setSlugLocked] = useState(!isNew)
+  const [coverUploading, setCoverUploading] = useState(false)
 
   useEffect(() => {
     if (isNew) return undefined
@@ -83,6 +85,7 @@ export default function AdminCourseEditor() {
           duration: data.duration || '',
           status: data.status || 'draft',
           featured: Boolean(data.featured),
+          thumbnail: data.thumbnail || '',
         })
         setModules(data.modules || [])
       })
@@ -135,6 +138,24 @@ export default function AdminCourseEditor() {
       setError(err.message)
     } finally {
       setSaving(false)
+    }
+  }
+
+  async function handleCoverFile(event) {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file) return
+
+    setError('')
+    setCoverUploading(true)
+    try {
+      const result = await uploadService.uploadCourseCover(file)
+      setCourse((current) => ({ ...current, thumbnail: result.url }))
+      flash('Cover image uploaded. Save course details to publish it.')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setCoverUploading(false)
     }
   }
 
@@ -281,7 +302,7 @@ export default function AdminCourseEditor() {
 
   return (
     <section className="py-12 lg:py-16">
-      <Seo title="Course editor" description="Edit a LearnMQL5 course." noindex />
+      <Seo title="Course editor" description="Edit a learnmql course." noindex />
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <Link
           to="/admin"
@@ -416,6 +437,24 @@ export default function AdminCourseEditor() {
               value={course.description}
               onChange={(event) => setCourse((current) => ({ ...current, description: event.target.value }))}
             />
+          </Field>
+          <Field label="Course cover image">
+            <input
+              className={inputClass}
+              placeholder="Paste an image URL, or upload a file below"
+              value={course.thumbnail || ''}
+              onChange={(event) => setCourse((current) => ({ ...current, thumbnail: event.target.value }))}
+            />
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-line px-3 py-1.5 text-xs font-medium text-fg hover:border-[#00d181]/40">
+                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" className="hidden" onChange={handleCoverFile} disabled={coverUploading} />
+                {coverUploading ? 'Uploading…' : 'Upload cover image'}
+              </label>
+              <span className="text-xs text-muted">JPEG, PNG, WebP, or GIF · max 10 MB</span>
+            </div>
+            {course.thumbnail && (
+              <img src={course.thumbnail} alt="Course cover preview" className="mt-3 h-40 w-full rounded-lg border border-line object-cover" />
+            )}
           </Field>
           <button
             type="submit"

@@ -21,3 +21,23 @@ export async function uploadLessonVideo(file) {
 
     return data
 }
+
+export async function uploadCourseCover(file) {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    const res = await fetch(`${API_URL}/uploads/course-cover`, {
+        method: 'POST',
+        credentials: 'include',
+        body: formData,
+    })
+
+    const data = await res.json().catch(() => ({}))
+    if (!res.ok) {
+        const error = new Error(data.message || 'Cover image upload failed')
+        error.status = res.status
+        throw error
+    }
+
+    return data
+}

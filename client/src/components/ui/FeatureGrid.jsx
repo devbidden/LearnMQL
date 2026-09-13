@@ -12,7 +12,7 @@ export default function FeatureGrid() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <p className="eyebrow">Why LearnMQL</p>
         <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">Why learn MQL4 and MQL5 here</h2>
-        <p className="mt-3 max-w-xl text-muted">Learn algorithmic trading by building real Expert Advisors. Bots are optional extras, not the main product.</p>
+        <p className="mt-3 max-w-xl text-muted">Don’t just learn, also build. Master algorithmic trading by building real Expert Advisors from the ground up. Start where you are. We’ll get you there.</p>
 
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {features.map(({ title, description }, index) => {

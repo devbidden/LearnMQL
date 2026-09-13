@@ -8,10 +8,10 @@ export default function CTA() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,209,129,0.1),transparent_70%)]" />
           <div className="relative">
             <h2 className="display-title text-4xl font-bold text-fg sm:text-5xl">
-              Start the course. Build the bot.
+              Start the course.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted">
-              Enroll, pass the quizzes, and ship an Expert Advisor in MQL4 or MQL5 that you actually understand.
+              Enroll, pass the quizzes, and build an Expert Advisor in MQL4 or MQL5 that you actually understand.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link

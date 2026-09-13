@@ -17,6 +17,8 @@ const columns = [
     links: [
       { to: '/about', label: 'About' },
       { to: '/contact', label: 'Contact' },
+      { to: '/faq', label: 'FAQ' },
+      { to: '/privacy', label: 'Privacy policy' },
       { to: '/login', label: 'Log in' },
     ],
   },
@@ -52,11 +54,11 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold text-fg">Connect</p>
             <a
-              href="mailto:hello@learnmql5.com"
+              href="mailto:hello@learnmql.com"
               className="mt-4 inline-flex items-center gap-2 text-sm text-muted transition hover:text-[#00d181]"
             >
               <Mail size={16} />
-              hello@learnmql5.com
+              hello@learnmql.com
             </a>
             <a
               href={telegramUrl}
@@ -70,8 +72,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} LearnMQL5. All rights reserved.</p>
-          <p>MQL4 &amp; MQL5 courses for MetaTrader. Bots optional.</p>
+          <p>© {new Date().getFullYear()} learnmql. All rights reserved.</p>
+          <p>MQL4 &amp; MQL5 courses for MetaTrader.</p>
         </div>
       </div>
     </footer>

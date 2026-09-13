@@ -52,7 +52,7 @@ export const aboutStats = [
 export const reviews = [
   {
     id: 'review-1',
-    name: 'Daniel Okafor',
+    name: 'Daniel Okafor, Nigeria',
     role: 'MQL5 Masterclass student',
     quote:
       'The course broke down Expert Advisor development in a way that finally made sense. I shipped my first backtested EA in under a month.',
@@ -60,26 +60,26 @@ export const reviews = [
   },
   {
     id: 'review-2',
-    name: 'Priya Nair',
-    role: 'Patrex Pro user',
+    name: 'Priya Nair, India',
+    role: 'MQL4 Masterclass student',
     quote:
-      'Patrex Pro has been running on my live account for three months with consistent, risk-managed results. Support has been excellent too.',
+      'My EA has been running on my live account for three months with consistent, risk-managed results.',
     rating: 5,
   },
   {
     id: 'review-3',
-    name: 'Marcus Chen',
+    name: 'Marcus Chen, USA',
     role: 'TrendMark user',
     quote:
-      'Clean signals, minimal noise. TrendMark cut through a lot of the guesswork I used to have around entries.',
+      '...Learning from the course cut through a lot of the guesswork I used to have around entries.',
     rating: 4,
   },
   {
     id: 'review-4',
-    name: 'Amara Eze',
+    name: 'Amara Eze, Nigeria',
     role: 'MQL5 Masterclass student',
     quote:
-      'Quizzes after every lesson kept me honest about what I actually understood versus what I just watched. Best structured trading course I have taken.',
+      'Quizzes after every lesson kept me honest about what I actually understood versus what I just watched. Best structured trading course I have taken. Keep up the good work.',
     rating: 5,
   },
 ]
@@ -118,4 +118,4 @@ export const footerLinks = [
 ]
 
 export const telegramUrl =
-  import.meta.env.VITE_TELEGRAM_URL || 'https://t.me/learnmql5'
+  import.meta.env.VITE_TELEGRAM_URL || 'https://t.me/learnmqlofficial'

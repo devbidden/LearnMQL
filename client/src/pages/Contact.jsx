@@ -4,19 +4,23 @@ import Spinner from '../components/ui/Spinner'
 import Seo from '../components/seo/Seo'
 import Breadcrumbs from '../components/seo/Breadcrumbs'
 import { PAGE_SEO } from '../seo/pages'
+import { sendContactMessage } from '../services/contactService'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
   async function handleSubmit(event) {
     event.preventDefault()
     setError('')
+    setSuccess('')
     setSubmitting(true)
     try {
-      await new Promise((resolve) => setTimeout(resolve, 600))
+      const result = await sendContactMessage(form)
       setForm({ name: '', email: '', message: '' })
+      setSuccess(result.message)
     } catch (err) {
       setError(err.message || 'Could not send your message. Please try again.')
     } finally {
@@ -48,6 +52,11 @@ export default function Contact() {
           {error && (
             <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
               {error}
+            </p>
+          )}
+          {success && (
+            <p className="rounded-lg border border-[#00d181]/30 bg-[#00d181]/10 px-4 py-3 text-sm text-[#00d181]">
+              {success}
             </p>
           )}
           <div>

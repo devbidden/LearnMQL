@@ -94,6 +94,7 @@ const enrollmentRoutes = require('./routers/enrollmentRoute');
 const progressRoutes = require('./routers/progressRoute');
 const paymentRoutes = require('./routers/paymentRoute');
 const uploadRoutes = require('./routers/uploadRoute');
+const contactRoutes = require('./routers/contactRoute');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/courses', courseRoutes);
@@ -103,6 +104,7 @@ app.use('/api/enrollments', enrollmentRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/uploads', uploadRoutes);
+app.use('/api/contact', contactRoutes);
 
 // fallback error handler
 app.use((err, req, res, next) => {

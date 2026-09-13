@@ -1,13 +1,13 @@
-const fallbackOrigin = 'https://learnmql5.com'
+const fallbackOrigin = 'https://www.learnmql.com'
 
 export const SITE = {
-  name: 'LearnMQL5',
+  name: 'learnmql',
   tagline: 'MQL4 & MQL5 courses for MetaTrader',
   description:
     'Learn MQL4 and MQL5 programming for MetaTrader. Build Expert Advisors, indicators, and automated trading systems with expert-led courses.',
   origin: (import.meta.env.VITE_SITE_URL || fallbackOrigin).replace(/\/$/, ''),
-  email: 'hello@learnmql5.com',
-  twitter: '@learnmql5',
+  email: 'hello@learnmql.com',
+  twitter: '@learnmql',
   locale: 'en_US',
   get ogImage() {
     return `${this.origin}/favicon.svg`

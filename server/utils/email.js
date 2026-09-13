@@ -21,12 +21,13 @@ const verifyEmailTransport = async () => {
     }
 };
 
-const sendEmail = async ({ to, subject, html }) => {
+const sendEmail = async ({ to, subject, html, replyTo }) => {
     await transporter.sendMail({
         from: process.env.EMAIL_FROM,
         to,
         subject,
         html,
+        replyTo,
     });
 };
 

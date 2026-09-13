@@ -80,7 +80,7 @@ export default function Lesson() {
 
   return (
     <section className="py-12 lg:py-16">
-      <Seo title={`${lesson.title} · ${course.title}`} description={`Lesson in ${course.title} on LearnMQL5.`} noindex />
+      <Seo title={`${lesson.title} · ${course.title}`} description={`Lesson in ${course.title} on learnmql.`} noindex />
       <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[240px_1fr] lg:px-8">
         <aside className="hidden lg:block">
           <Link
@@ -107,8 +107,8 @@ export default function Lesson() {
                           <Link
                             to={`/dashboard/courses/${course.slug}/lessons/${item.id}`}
                             className={`block rounded-lg px-3 py-2 text-sm ${active
-                                ? 'bg-[#00d181]/10 font-medium text-[#00d181]'
-                                : 'text-muted hover:bg-white/5 hover:text-fg'
+                              ? 'bg-[#00d181]/10 font-medium text-[#00d181]'
+                              : 'text-muted hover:bg-white/5 hover:text-fg'
                               }`}
                           >
                             {done ? '✓ ' : ''}

@@ -18,7 +18,6 @@ async function request(path, options = {}) {
     return data
 }
 
-export async function listUsersAdmin() {
-    const data = await request('/users')
-    return data.users
+export async function listUsersAdmin({ page = 1, limit = 10 } = {}) {
+    return request(`/users?page=${page}&limit=${limit}`)
 }

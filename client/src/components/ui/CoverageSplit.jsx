@@ -12,12 +12,10 @@ const left = [
 ]
 
 const right = [
-  'Patrex Pro, TrendMark, and TrendLine Alerts',
   'Study a live system while you learn',
   'Smart entry and exit logic',
   'Built-in risk management',
   'Install on demo or live accounts',
-  'Buy securely on MQL5.com',
 ]
 
 function Column({ kicker, title, items }) {

@@ -22,6 +22,8 @@ import AdminCourseEditor from './pages/AdminCourseEditor'
 import PaymentCallback from './pages/PaymentCallback'
 import NotFound from './pages/NotFound'
 import ErrorPage from './pages/ErrorPage'
+import Faq from './pages/Faq'
+import Privacy from './pages/Privacy'
 import { AuthProvider } from './context/AuthContext'
 import { ProgressProvider } from './context/ProgressContext'
 import { ThemeProvider } from './context/ThemeContext'
@@ -43,6 +45,8 @@ export default function App() {
                     <Route path="courses/:slug" element={<CourseDetail />} />
                     <Route path="about" element={<About />} />
                     <Route path="contact" element={<Contact />} />
+                    <Route path="faq" element={<Faq />} />
+                    <Route path="privacy" element={<Privacy />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />

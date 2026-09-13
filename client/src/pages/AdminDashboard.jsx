@@ -22,17 +22,20 @@ export default function AdminDashboard() {
     const [courseQuery, setCourseQuery] = useState('')
     const [courses, setCourses] = useState([])
     const [users, setUsers] = useState([])
+    const [userPage, setUserPage] = useState(1)
+    const [userPagination, setUserPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 })
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
     const [busyId, setBusyId] = useState('')
 
-    async function load() {
+    async function load(page = userPage) {
         const [coursesData, usersData] = await Promise.all([
             courseService.listCoursesAdmin(),
-            userService.listUsersAdmin(),
+            userService.listUsersAdmin({ page, limit: 10 }),
         ])
         setCourses(coursesData)
-        setUsers(usersData)
+        setUsers(usersData.users)
+        setUserPagination(usersData.pagination)
     }
 
     useEffect(() => {
@@ -48,7 +51,7 @@ export default function AdminDashboard() {
         return () => {
             cancelled = true
         }
-    }, [])
+    }, [userPage])
 
     const filteredUsers = users.filter(
         (user) =>
@@ -64,7 +67,7 @@ export default function AdminDashboard() {
     const totalLessons = courses.reduce((sum, course) => sum + (course.totalLessons || 0), 0)
 
     const adminStats = [
-        { label: 'Total learners', value: String(users.length), icon: Users },
+        { label: 'Total learners', value: String(userPagination.total), icon: Users },
         { label: 'Published courses', value: String(publishedCount), icon: BookOpen },
         { label: 'Draft courses', value: String(courses.length - publishedCount), icon: Layers },
         { label: 'Total lessons', value: String(totalLessons), icon: BarChart3 },
@@ -102,15 +105,15 @@ export default function AdminDashboard() {
 
     return (
         <section className="py-16 lg:py-20">
-            <Seo title="Admin" description="LearnMQL5 admin." noindex />
+            <Seo title="Admin" description="learnmql admin." noindex />
             <div className="mx-auto max-w-7xl px-5 lg:px-8">
                 <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
                     <div>
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#00d181]">Admin panel</p>
-                    <h1 className="mt-2 text-3xl font-bold text-fg sm:text-4xl">Course management</h1>
-                    <p className="mt-2 text-sm text-muted">
-                        Edit curriculum here. Published courses appear on the public Courses page immediately.
-                    </p>
+                        <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#00d181]">Admin panel</p>
+                        <h1 className="mt-2 text-3xl font-bold text-fg sm:text-4xl">Course management</h1>
+                        <p className="mt-2 text-sm text-muted">
+                            Edit curriculum here. Published courses appear on the public Courses page immediately.
+                        </p>
                     </div>
                     <button
                         type="button"
@@ -146,8 +149,8 @@ export default function AdminDashboard() {
                     <div className="rounded-2xl border border-line bg-surface p-6">
                         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
                             <div>
-                            <p className="text-sm text-muted">Course catalog</p>
-                            <h2 className="mt-1 text-xl font-bold text-fg">All courses</h2>
+                                <p className="text-sm text-muted">Course catalog</p>
+                                <h2 className="mt-1 text-xl font-bold text-fg">All courses</h2>
                             </div>
                             <div className="relative w-full sm:w-[220px]">
                                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
@@ -231,8 +234,8 @@ export default function AdminDashboard() {
                     <div className="rounded-2xl border border-line bg-surface p-6">
                         <div className="flex items-center justify-between">
                             <div>
-                            <p className="text-sm text-muted">Members</p>
-                            <h2 className="mt-1 text-xl font-bold text-fg">All users</h2>
+                                <p className="text-sm text-muted">Members</p>
+                                <h2 className="mt-1 text-xl font-bold text-fg">All users</h2>
                             </div>
                             <div className="relative w-[180px]">
                                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
@@ -266,6 +269,31 @@ export default function AdminDashboard() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                        <div className="mt-5 flex items-center justify-between gap-3 border-t border-line pt-4">
+                            <p className="text-xs text-muted">
+                                {userPagination.total === 0
+                                    ? 'No users'
+                                    : `Page ${userPagination.page} of ${userPagination.totalPages} · ${userPagination.total} users`}
+                            </p>
+                            <div className="flex gap-2">
+                                <button
+                                    type="button"
+                                    disabled={userPagination.page <= 1}
+                                    onClick={() => setUserPage((page) => Math.max(1, page - 1))}
+                                    className="rounded-lg border border-line px-3 py-1.5 text-xs font-medium text-fg disabled:cursor-not-allowed disabled:opacity-40"
+                                >
+                                    Previous
+                                </button>
+                                <button
+                                    type="button"
+                                    disabled={userPagination.page >= userPagination.totalPages}
+                                    onClick={() => setUserPage((page) => Math.min(userPagination.totalPages, page + 1))}
+                                    className="rounded-lg border border-line px-3 py-1.5 text-xs font-medium text-fg disabled:cursor-not-allowed disabled:opacity-40"
+                                >
+                                    Next
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

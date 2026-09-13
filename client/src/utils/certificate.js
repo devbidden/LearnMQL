@@ -26,7 +26,7 @@ function certificateId(name, courseTitle) {
 
 export function buildCertificateSvg({ name, courseTitle, dateLabel }) {
   const { line1, line2 } = wrapName(name)
-  const title = escapeXml(courseTitle || 'LearnMQL5 Program')
+  const title = escapeXml(courseTitle || 'learnmql Program')
   const date = escapeXml(dateLabel)
   const n1 = escapeXml(line1)
   const n2 = escapeXml(line2)
@@ -117,7 +117,7 @@ export function buildCertificateSvg({ name, courseTitle, dateLabel }) {
   <g transform="translate(1288, 930)">
     <path d="M-90 8 C-50 -28, -10 24, 28 -10 S 78 22, 110 2" fill="none" stroke="#00d181" stroke-width="2.4" stroke-linecap="round"/>
     <text y="36" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#f8fafc">Instructor</text>
-    <text y="56" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#9ca3af">LearnMQL5</text>
+    <text y="56" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#9ca3af">learnmql</text>
   </g>
 </svg>`
 }
@@ -150,7 +150,7 @@ export async function downloadCertificate({ name, courseTitle, fileName }) {
         }
         const link = document.createElement('a')
         link.href = URL.createObjectURL(png)
-        link.download = fileName || `LearnMQL5-Certificate.png`
+        link.download = fileName || `learnmql-Certificate.png`
         link.click()
         URL.revokeObjectURL(link.href)
         resolve()

@@ -32,7 +32,7 @@ export default function VerifyEmail() {
 
     return (
         <section className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-5 py-16">
-            <Seo title="Verify email" description="Verify your LearnMQL5 email address." noindex />
+            <Seo title="Verify email" description="Verify your learnmql email address." noindex />
             <div className="w-full max-w-md text-center">
                 <BrandLogo compact />
 

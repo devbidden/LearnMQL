@@ -137,8 +137,16 @@ export default function CourseDetail() {
           ]}
         />
 
-        <div className="mt-8 flex h-48 items-center justify-center rounded-xl bg-card" aria-hidden="true">
-          <GraduationCap className="h-16 w-16 text-[#4b5563]" />
+        <div className="mt-8 flex h-48 items-center justify-center overflow-hidden rounded-xl bg-card">
+          {course.thumbnail ? (
+            <img
+              src={course.thumbnail}
+              alt={`Cover for ${course.title}`}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <GraduationCap className="h-16 w-16 text-[#4b5563]" aria-hidden="true" />
+          )}
         </div>
 
         <p className="mt-8 text-sm font-medium uppercase tracking-[0.18em] text-[#00d181]">{course.level}</p>

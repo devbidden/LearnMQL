@@ -29,7 +29,7 @@ export default function ForgotPassword() {
 
     return (
         <section className="flex min-h-[calc(100vh-8rem)] items-center justify-center px-5 py-16">
-            <Seo title="Forgot password" description="Reset your LearnMQL5 password." noindex />
+            <Seo title="Forgot password" description="Reset your learnmql password." noindex />
             <div className="w-full max-w-md">
                 <div className="text-center">
                     <BrandLogo compact />

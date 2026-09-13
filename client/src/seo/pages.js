@@ -18,23 +18,33 @@ export const PAGE_SEO = {
     path: '/bots',
   },
   about: {
-    title: 'About LearnMQL5: MQL4 & MQL5 Programming Education',
+    title: 'About learnmql: MQL4 & MQL5 Programming Education',
     description:
-      'LearnMQL5 teaches MQL4 and MQL5 programming, MetaTrader development, Expert Advisors, and algorithmic trading — built by a trader who ships real automated systems.',
+      'learnmql teaches MQL4 and MQL5 programming, MetaTrader development, Expert Advisors, and algorithmic trading — built by a trader who ships real automated systems.',
     path: '/about',
   },
   contact: {
-    title: 'Contact LearnMQL5: MQL4 & MQL5 Course Questions',
+    title: 'Contact learnmql: MQL4 & MQL5 Course Questions',
     description:
-      'Contact LearnMQL5 about MQL4 and MQL5 courses, Expert Advisor development, trading bots, or your student account.',
+      'Contact learnmql about MQL4 and MQL5 courses, Expert Advisor development, trading bots, or your student account.',
     path: '/contact',
+  },
+  faq: {
+    title: 'MQL4 & MQL5 Frequently Asked Questions',
+    description: 'Answers to common questions about learning MQL4 and MQL5, MetaTrader programming, Expert Advisors, and automated trading.',
+    path: '/faq',
+  },
+  privacy: {
+    title: 'Privacy Policy',
+    description: 'Learn how learnmql collects, uses, and protects account and course information.',
+    path: '/privacy',
   },
   login: {
     title: 'Log in',
-    description: 'Sign in to LearnMQL5 to continue your MQL4 and MQL5 courses.',
+    description: 'Sign in to learnmql to continue your MQL4 and MQL5 courses.',
   },
   register: {
     title: 'Create an account',
-    description: 'Create a free LearnMQL5 account to enroll in MQL4 and MQL5 courses and track Expert Advisor lessons.',
+    description: 'Create a free learnmql account to enroll in MQL4 and MQL5 courses and track Expert Advisor lessons.',
   },
 }

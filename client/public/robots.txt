@@ -9,4 +9,4 @@ Disallow: /reset-password
 Disallow: /verify-email
 Disallow: /payment
 
-Sitemap: https://learnmql5.com/sitemap.xml
+Sitemap: https://www.learnmql.com/sitemap.xml

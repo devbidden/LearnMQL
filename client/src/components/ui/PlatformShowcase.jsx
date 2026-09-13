@@ -10,9 +10,9 @@ const tabs = [
     image: '/images/courses.png',
     points: [
       'Go from MQL4 or MQL5 basics to a working Expert Advisor',
-      'Quizzes after every lesson to lock in what you learned',
+      'Take curated quizzes after every lesson to lock in what you learned',
       'Practical coding and strategy development',
-      'Track progress from first lesson to certificate',
+      'Track your progress from first lesson to certificate',
     ],
   },
   {
@@ -22,9 +22,8 @@ const tabs = [
     title: 'Build, test, then go live',
     image: '/images/practice.png',
     points: [
-      'Write the strategy, then backtest it yourself',
+      'Write the strategy, then backtest against historical data',
       'Learn optimization without guessing',
-      'Understand every line before you risk capital',
       'Ship an EA you can actually explain',
     ],
   },
@@ -35,7 +34,7 @@ const tabs = [
     title: 'Risk management in the curriculum',
     image: '/images/risk.png',
     points: [
-      'Drawdown limits and position sizing in your own code',
+      'Add drawdown limits and position sizing in your own code',
       'Configure risk to match your account size',
       'Audit your logic before a live account',
       'Trade smaller until the system proves itself',
@@ -50,7 +49,6 @@ const tabs = [
     points: [
       'Telegram updates when new lessons drop',
       'Talk through stuck quizzes and strategy ideas',
-      'Get help when an install or lesson does not click',
       'Stay accountable with other traders learning MQL4 and MQL5',
     ],
   },
@@ -62,9 +60,7 @@ const tabs = [
     image: '/images/bots.png',
     points: [
       'Install an Expert Advisor while you work through the course',
-      'Study a live system as a reference, not a black box',
-      'Buy securely on MQL5.com',
-      'Use them as examples, not a substitute for learning',
+      'Study a live system as a reference',
     ],
   },
 ]

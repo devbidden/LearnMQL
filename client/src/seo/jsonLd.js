@@ -10,7 +10,7 @@ export function organizationJsonLd() {
     email: SITE.email,
     description: SITE.description,
     logo: absoluteUrl('/favicon.svg'),
-    sameAs: ['https://t.me/learnmql5'],
+    sameAs: ['https://t.me/learnmql'],
     knowsAbout: [
       'MQL4',
       'MQL5',

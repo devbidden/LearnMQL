@@ -43,7 +43,7 @@ export default function PaymentCallback() {
   if (error) {
     return (
       <section className="mx-auto max-w-lg px-5 py-24 text-center">
-        <Seo title="Payment" description="Payment status for your LearnMQL5 enrollment." noindex />
+        <Seo title="Payment" description="Payment status for your learnmql enrollment." noindex />
         <h1 className="text-2xl font-bold text-fg">Payment not completed</h1>
         <p className="mt-4 text-sm text-red-400">{error}</p>
         <Link to="/courses" className="mt-8 inline-block text-[#00d181] hover:underline">
@@ -55,7 +55,7 @@ export default function PaymentCallback() {
 
   return (
     <>
-      <Seo title="Payment" description="Confirming your LearnMQL5 payment." noindex />
+      <Seo title="Payment" description="Confirming your learnmql payment." noindex />
       <PageLoader label="Confirming your payment…" />
     </>
   )

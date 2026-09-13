@@ -18,9 +18,8 @@ export default function CommunityBanner({ compact = false }) {
       href={telegramUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative block overflow-hidden rounded-[1.75rem] border border-[#2AABEE]/30 bg-gradient-to-r from-[#0d2a3a] via-[#123347] to-[#0b3d2e] ${
-        compact ? 'p-5' : 'p-8 sm:p-10'
-      } transition hover:border-[#2AABEE]/60 hover:shadow-[0_16px_40px_rgba(42,171,238,0.18)]`}
+      className={`group relative block overflow-hidden rounded-[1.75rem] border border-[#2AABEE]/30 bg-gradient-to-r from-[#0d2a3a] via-[#123347] to-[#0b3d2e] ${compact ? 'p-5' : 'p-8 sm:p-10'
+        } transition hover:border-[#2AABEE]/60 hover:shadow-[0_16px_40px_rgba(42,171,238,0.18)]`}
     >
       <div className="pointer-events-none absolute -right-8 -top-10 h-40 w-40 rounded-full bg-[#2AABEE]/20 blur-3xl transition group-hover:bg-[#2AABEE]/30" />
       <div className="pointer-events-none absolute -bottom-12 left-20 h-32 w-32 rounded-full bg-[#00d181]/15 blur-3xl" />
@@ -32,7 +31,7 @@ export default function CommunityBanner({ compact = false }) {
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">Telegram community</p>
             <p className={`mt-1 font-bold tracking-tight text-white ${compact ? 'text-lg' : 'text-3xl'}`}>
-              Join the LearnMQL5 community
+              Join the LearnMQL community
             </p>
             <p className="mt-1 max-w-xl text-sm leading-6 text-[#c5d7e2]">
               Get bot updates, course drops, and talk strategy with other traders in our Telegram channel.

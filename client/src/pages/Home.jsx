@@ -127,7 +127,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <p className="eyebrow">Reviews</p>
           <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">
-            What students say about our MQL courses
+            What students say about our courses
           </h2>
           <div className="mt-8">
             <ReviewsSlider reviews={reviews} />

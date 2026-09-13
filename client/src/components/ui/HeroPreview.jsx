@@ -18,16 +18,15 @@ export default function HeroPreview() {
             <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#00d181]" />
           </div>
-          <p className="hidden text-xs font-medium text-muted sm:block">LearnMQL5</p>
+          <p className="hidden text-xs font-medium text-muted sm:block">learnmql</p>
           <div className="flex rounded-full border border-line bg-page/70 p-1">
             {modes.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => setMode(item.id)}
-                className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
-                  mode === item.id ? 'bg-[#00d181] text-[#0b0e11]' : 'text-muted hover:text-fg'
-                }`}
+                className={`rounded-full px-3 py-1 text-xs font-semibold transition ${mode === item.id ? 'bg-[#00d181] text-[#0b0e11]' : 'text-muted hover:text-fg'
+                  }`}
               >
                 {item.label}
               </button>

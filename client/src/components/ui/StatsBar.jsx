@@ -6,7 +6,7 @@ export default function StatsBar() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <p className="eyebrow">By the numbers</p>
         <h2 className="display-title mt-3 max-w-3xl text-4xl font-bold text-fg sm:text-5xl">
-          Built by a trader, taught to traders
+          Made by seasoned algorithmic traders
         </h2>
         <p className="mt-3 max-w-2xl text-muted">
           Courses that take you from first lines of MQL4 or MQL5 to a working Expert Advisor — with optional bots if you want a running example.

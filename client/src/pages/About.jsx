@@ -19,14 +19,14 @@ export default function About() {
         <Breadcrumbs
           items={[
             { name: 'Home', path: '/' },
-            { name: 'About LearnMQL5', path: '/about' },
+            { name: 'About learnMQL', path: '/about' },
           ]}
         />
         <p className="eyebrow mt-6">Company</p>
-        <h1 className="display-title mt-4 text-5xl font-bold text-fg">About LearnMQL5</h1>
+        <h1 className="display-title mt-4 text-5xl font-bold text-fg">About learnMQL</h1>
         <p className="mt-6 text-base leading-7 text-muted sm:text-lg">
           I&apos;m a trader and MQL4/MQL5 developer with over 5 years of experience building automated
-          trading systems for MetaTrader. LearnMQL5 is where I teach Expert Advisor development and share
+          trading systems for MetaTrader. learnMQL is where I teach Expert Advisor development and share
           the bots I&apos;ve built along the way.
         </p>
 
@@ -61,7 +61,7 @@ export default function About() {
         </p>
         <p className="mt-4 text-base leading-7 text-muted">
           Whether you want a ready-made trading bot or want to learn MQL4 or MQL5 from scratch,
-          LearnMQL5 has you covered. Bots are available through MQL5.com for secure, verified purchases.
+          learnMQL has you covered. Bots are available through MQL5.com for secure, verified purchases.
         </p>
       </div>
     </section>

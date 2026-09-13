@@ -4,8 +4,16 @@ import { GraduationCap } from 'lucide-react'
 export default function CourseCard({ course, showPrice = true }) {
   return (
     <article className="card-hover group flex flex-col overflow-hidden rounded-[1.5rem] border border-line bg-card">
-      <div className="flex h-44 items-center justify-center border-b border-line bg-[radial-gradient(ellipse_at_center,rgba(0,209,129,0.12),transparent_70%)]" aria-hidden="true">
-        <GraduationCap className="h-12 w-12 text-[#4b5563] transition group-hover:text-[#00d181]/70" />
+      <div className="flex h-44 items-center justify-center overflow-hidden border-b border-line bg-[radial-gradient(ellipse_at_center,rgba(0,209,129,0.12),transparent_70%)]">
+        {course.thumbnail ? (
+          <img
+            src={course.thumbnail}
+            alt={`Cover for ${course.title}`}
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <GraduationCap className="h-12 w-12 text-[#4b5563] transition group-hover:text-[#00d181]/70" aria-hidden="true" />
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6">

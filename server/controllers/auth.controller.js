@@ -111,8 +111,24 @@ const ResendVerification = async (req, res) => {
 
 const ListUsersAdmin = async (req, res) => {
     try {
-        const users = await User.find().select('-password').sort({ date: -1 });
-        res.status(200).json({ success: true, users });
+        const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+        const limit = Math.min(100, Math.max(1, Number.parseInt(req.query.limit, 10) || 10));
+        const skip = (page - 1) * limit;
+        const [users, total] = await Promise.all([
+            User.find().select('-password').sort({ date: -1 }).skip(skip).limit(limit),
+            User.countDocuments(),
+        ]);
+
+        res.status(200).json({
+            success: true,
+            users,
+            pagination: {
+                page,
+                limit,
+                total,
+                totalPages: Math.max(1, Math.ceil(total / limit)),
+            },
+        });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
