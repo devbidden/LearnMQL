@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -35,25 +36,52 @@ app.post('/api/payments/webhook', express.raw({ type: 'application/json' }), Web
 app.use(express.json());
 app.use(cookieParser());
 
-// Safe deployment diagnostic: exposes connection state, never credentials.
-app.get('/api/health', (req, res) => {
+// Safe deployment diagnostic: attempts a connection but never exposes credentials.
+app.get('/api/health', async (req, res) => {
     const states = {
         0: 'disconnected',
         1: 'connected',
         2: 'connecting',
         3: 'disconnecting',
     };
-    const readyState = mongoose.connection.readyState;
-    const connected = readyState === 1;
+    try {
+        await connectDB();
+    } catch (error) {
+        return res.status(503).json({
+            success: false,
+            service: 'learn-mql-apiss',
+            database: {
+                connected: false,
+                state: states[mongoose.connection.readyState] || 'unknown',
+                error: error.message,
+            },
+        });
+    }
 
-    res.status(connected ? 200 : 503).json({
-        success: connected,
-        service: 'learn-mql-apix',
+    const readyState = mongoose.connection.readyState;
+
+    res.status(200).json({
+        success: true,
+        service: 'learn-mql-api',
         database: {
-            process: process.env.MONGODB_URL,
+            connected: true,
             state: states[readyState] || 'unknown',
         },
     });
+});
+
+// Vercel functions can restart at any time; connect per invocation and reuse
+// the connection while the function instance is warm.
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (error) {
+        res.status(503).json({
+            success: false,
+            message: 'Database connection is unavailable. Please try again shortly.',
+        });
+    }
 });
 
 

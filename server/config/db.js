@@ -1,23 +1,32 @@
 const mongoose = require("mongoose");
 
-const connectDB = async () => {
-    console.log("--- MongoDB Debug ---");
-    console.log("MONGODB_URL exists:", !!process.env.MONGODB_URL);
-    console.log("MongoDB readyState before:", mongoose.connection.readyState);
+let connectionPromise;
 
+const connectDB = async () => {
     if (!process.env.MONGODB_URL) {
         throw new Error("MONGODB_URL is not configured");
     }
 
-    try {
-        await mongoose.connect(process.env.MONGODB_URL);
+    if (mongoose.connection.readyState === 1) {
+        return mongoose.connection;
+    }
 
+    if (mongoose.connection.readyState === 2 && connectionPromise) {
+        return connectionPromise;
+    }
+
+    try {
+        console.log("Connecting to MongoDB");
+        connectionPromise = mongoose.connect(process.env.MONGODB_URL, {
+            serverSelectionTimeoutMS: 10000,
+        });
+        await connectionPromise;
         console.log("MongoDB connected successfully");
-        console.log("MongoDB readyState after:", mongoose.connection.readyState);
+        return mongoose.connection;
     } catch (error) {
+        connectionPromise = undefined;
         console.error("MongoDB connection failed:");
         console.error(error);
-
         throw error;
     }
 };
