@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -33,6 +34,27 @@ app.post('/api/payments/webhook', express.raw({ type: 'application/json' }), Web
 
 app.use(express.json());
 app.use(cookieParser());
+
+// Safe deployment diagnostic: exposes connection state, never credentials.
+app.get('/api/health', (req, res) => {
+    const states = {
+        0: 'disconnected',
+        1: 'connected',
+        2: 'connecting',
+        3: 'disconnecting',
+    };
+    const readyState = mongoose.connection.readyState;
+    const connected = readyState === 1;
+
+    res.status(connected ? 200 : 503).json({
+        success: connected,
+        service: 'learn-mql-api',
+        database: {
+            connected,
+            state: states[readyState] || 'unknown',
+        },
+    });
+});
 
 
 // routes
