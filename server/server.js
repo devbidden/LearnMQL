@@ -6,7 +6,7 @@ const connectcloudinary = require("./config/cloudinary").connectcloudinary;
 const { verifyEmailTransport } = require("./utils/email");
 const app = require("./app");
 const PORT = process.env.PORT || 5000;
-
+ 
 async function startServer() { 
     try {
         await connectDB();
