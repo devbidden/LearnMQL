@@ -5,6 +5,7 @@ import {
     BookOpen,
     GraduationCap,
     Layers,
+    Mail,
     Pencil,
     Plus,
     Search,
@@ -13,6 +14,7 @@ import {
 } from 'lucide-react'
 import * as courseService from '../services/courseService'
 import * as userService from '../services/userService'
+import * as contactService from '../services/contactService'
 import PageLoader from '../components/ui/PageLoader'
 import Seo from '../components/seo/Seo'
 
@@ -22,20 +24,24 @@ export default function AdminDashboard() {
     const [courseQuery, setCourseQuery] = useState('')
     const [courses, setCourses] = useState([])
     const [users, setUsers] = useState([])
+    const [contactMessages, setContactMessages] = useState([])
     const [userPage, setUserPage] = useState(1)
     const [userPagination, setUserPagination] = useState({ page: 1, limit: 10, total: 0, totalPages: 1 })
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
     const [busyId, setBusyId] = useState('')
+    const [busyMessageId, setBusyMessageId] = useState('')
 
     async function load(page = userPage) {
-        const [coursesData, usersData] = await Promise.all([
+        const [coursesData, usersData, messagesData] = await Promise.all([
             courseService.listCoursesAdmin(),
             userService.listUsersAdmin({ page, limit: 10 }),
+            contactService.listContactMessages(),
         ])
         setCourses(coursesData)
         setUsers(usersData.users)
         setUserPagination(usersData.pagination)
+        setContactMessages(messagesData)
     }
 
     useEffect(() => {
@@ -71,6 +77,7 @@ export default function AdminDashboard() {
         { label: 'Published courses', value: String(publishedCount), icon: BookOpen },
         { label: 'Draft courses', value: String(courses.length - publishedCount), icon: Layers },
         { label: 'Total lessons', value: String(totalLessons), icon: BarChart3 },
+        { label: 'Contact messages', value: String(contactMessages.length), icon: Mail },
     ]
 
     async function togglePublish(course) {
@@ -96,6 +103,19 @@ export default function AdminDashboard() {
             setError(err.message)
         } finally {
             setBusyId('')
+        }
+    }
+
+    async function handleDeleteMessage(message) {
+        if (!window.confirm(`Delete the message from ${message.name}? This cannot be undone.`)) return
+        setBusyMessageId(message._id)
+        try {
+            await contactService.deleteContactMessage(message._id)
+            setContactMessages((messages) => messages.filter((item) => item._id !== message._id))
+        } catch (err) {
+            setError(err.message)
+        } finally {
+            setBusyMessageId('')
         }
     }
 
@@ -131,7 +151,7 @@ export default function AdminDashboard() {
                     </p>
                 )}
 
-                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
                     {adminStats.map(({ label, value, icon: Icon }) => (
                         <div key={label} className="card-hover rounded-2xl border border-line bg-surface p-5">
                             <div className="flex items-center justify-between">
@@ -297,6 +317,49 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                 </div>
+
+                <section className="mt-6 rounded-2xl border border-line bg-surface p-6">
+                    <div className="flex flex-wrap items-end justify-between gap-3">
+                        <div>
+                            <p className="text-sm text-muted">Inbox</p>
+                            <h2 className="mt-1 text-xl font-bold text-fg">Contact messages</h2>
+                        </div>
+                        <p className="text-xs text-muted">{contactMessages.length} received</p>
+                    </div>
+
+                    <div className="mt-5 space-y-3">
+                        {contactMessages.length === 0 && (
+                            <p className="rounded-xl border border-dashed border-line px-4 py-8 text-center text-sm text-muted">
+                                No contact messages yet.
+                            </p>
+                        )}
+                        {contactMessages.map((message) => (
+                            <article key={message._id} className="rounded-xl border border-line bg-card p-4">
+                                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                                    <div>
+                                        <h3 className="font-semibold text-fg">{message.name}</h3>
+                                        <a href={`mailto:${message.email}`} className="mt-1 inline-block text-sm text-[#00d181] hover:underline">
+                                            {message.email}
+                                        </a>
+                                    </div>
+                                    <time className="text-xs text-muted" dateTime={message.createdAt}>
+                                        {message.createdAt ? new Date(message.createdAt).toLocaleString() : ''}
+                                    </time>
+                                </div>
+                                <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-muted">{message.message}</p>
+                                <button
+                                    type="button"
+                                    disabled={busyMessageId === message._id}
+                                    onClick={() => handleDeleteMessage(message)}
+                                    className="mt-4 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-medium text-red-400 transition hover:bg-red-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                    <Trash2 size={13} />
+                                    {busyMessageId === message._id ? 'Deleting…' : 'Delete message'}
+                                </button>
+                            </article>
+                        ))}
+                    </div>
+                </section>
             </div>
         </section>
     )

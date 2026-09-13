@@ -15,3 +15,32 @@ export async function sendContactMessage(payload) {
   }
   return data
 }
+
+export async function listContactMessages() {
+  const res = await fetch(`${API_URL}/contact`, {
+    credentials: 'include',
+  })
+
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) {
+    const error = new Error(data.message || 'Could not load contact messages.')
+    error.status = res.status
+    throw error
+  }
+  return data.messages || []
+}
+
+export async function deleteContactMessage(id) {
+  const res = await fetch(`${API_URL}/contact/${id}`, {
+    method: 'DELETE',
+    credentials: 'include',
+  })
+
+  const data = await res.json().catch(() => ({}))
+  if (!res.ok) {
+    const error = new Error(data.message || 'Could not delete contact message.')
+    error.status = res.status
+    throw error
+  }
+  return data
+}

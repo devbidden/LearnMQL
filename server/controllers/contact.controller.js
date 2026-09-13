@@ -49,4 +49,16 @@ const listContactMessages = async (req, res) => {
     }
 };
 
-module.exports = { submitContactMessage, listContactMessages };
+const deleteContactMessage = async (req, res) => {
+    try {
+        const message = await ContactMessage.findByIdAndDelete(req.params.id);
+        if (!message) {
+            return res.status(404).json({ success: false, message: 'Contact message not found.' });
+        }
+        res.status(200).json({ success: true, message: 'Contact message deleted.' });
+    } catch (error) {
+        res.status(400).json({ success: false, message: 'Invalid contact message ID.' });
+    }
+};
+
+module.exports = { submitContactMessage, listContactMessages, deleteContactMessage };

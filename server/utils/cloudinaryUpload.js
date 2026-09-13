@@ -1,9 +1,15 @@
 const { Readable } = require("stream");
-const { cloudinary } = require("../config/cloudinary");
+const { cloudinary, configureCloudinary } = require("../config/cloudinary");
 
 // streams a buffer straight to Cloudinary without writing a temp file to disk
 const uploadBufferToCloudinary = (buffer, options = {}) => {
     return new Promise((resolve, reject) => {
+        try {
+            configureCloudinary();
+        } catch (error) {
+            reject(error);
+            return;
+        }
         const uploadStream = cloudinary.uploader.upload_stream(options, (error, result) => {
             if (error) return reject(error);
             resolve(result);
