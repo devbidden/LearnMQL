@@ -2,6 +2,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({ path: path.join(__dirname, '.env') });
 const connectDB = require("./config/db");
+connectDB();
 const connectcloudinary = require("./config/cloudinary").connectcloudinary;
 const { verifyEmailTransport } = require("./utils/email");
 const app = require("./app");
